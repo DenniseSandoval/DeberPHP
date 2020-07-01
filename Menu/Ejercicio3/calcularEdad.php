@@ -15,6 +15,9 @@
         $anioActual=($anioActual-1);
     }
     $edad=($anioActual-$anio);
+    if($edad<0){
+        $edad='Fecha de nacimiento incorrecta';
+    }
 ?>
 <html>
 <head>
