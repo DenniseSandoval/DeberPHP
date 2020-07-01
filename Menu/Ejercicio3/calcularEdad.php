@@ -11,17 +11,14 @@
 
     if (($mes == $mesActual) && ($dia > $diaActual)) {
         $anioActual=($anioActual-1); 
-    }
-        
-    if ($mes > $mesActual) {
+    }else if ($mes > $mesActual) {
         $anioActual=($anioActual-1);
     }
-    
     $edad=($anioActual-$anio);
 ?>
 <html>
 <head>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -34,14 +31,14 @@
         crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Edad</title>
 </head>
 <body>
     <div style="display: flex;align-items: center;justify-content: center;">
         <div class="abs-center">
             <div class=" align-items-center justify-content-between ">
                 <h4 style="text-align: center; margin-top: 50px;">Calculo de edad a partir de fecha de nacimiento</h4><br>
-                <p><strong>Fecha de nacimiento ingresada:</strong> <?=$fecha?></p>
+                <p><strong>Fecha de nacimiento ingresada:</strong> <?=$fechaNacimiento?></p>
                 <p><strong>Su edad es:</strong> <?= $edad?></p>
             </div>
         </div>
