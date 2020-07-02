@@ -1,22 +1,15 @@
 <?php
     $fechaNacimiento= $_POST['fecha'];
-    $fecha = strtotime($fechaNacimiento);
-    $anio = date("Y", $fecha);
-    $mes = date("m", $fecha);
-    $dia = date("d", $fecha);
-    //fecha actual
-    $anioActual=date("Y");
-    $mesActual=date("m");
-    $diaActual=date("d");
 
-    if (($mes == $mesActual) && ($dia > $diaActual)) {
-        $anioActual=($anioActual-1); 
-    }else if ($mes > $mesActual) {
-        $anioActual=($anioActual-1);
-    }
-    $edad=($anioActual-$anio);
-    if($edad<0){
-        $edad='Fecha de nacimiento incorrecta';
+    $fecha = new DateTime(date('Y/m/d',strtotime($fechaNacimiento))); 
+    $fechaActual =  new DateTime(date('Y/m/d',time())); 
+    $edad = date_diff($fechaActual,$fecha); 
+    $anios=$edad->format('%Y');
+    $meses=$edad->format('%m');
+    $dias=$edad->format('%d');
+    $edadPersona="$anios años, $meses meses y $dias dias";
+    if($fecha>=$fechaActual){
+        $edadPersona="Fecha incorrecta";   
     }
 ?>
 <html>
@@ -42,9 +35,16 @@
             <div class=" align-items-center justify-content-between ">
                 <h4 style="text-align: center; margin-top: 50px;">Calculo de edad a partir de fecha de nacimiento</h4><br>
                 <p><strong>Fecha de nacimiento ingresada:</strong> <?=$fechaNacimiento?></p>
-                <p><strong>Su edad es:</strong> <?= $edad?></p>
+                <p><strong>Edad: </strong><?=$edadPersona?></p>
             </div>
-        </div>
+            <div class="form-group row" style="justify-content: center;">
+                <div class="col-sm-6">
+                <a href="./edad.html" style="text-decoration: none;"><input type="button" class="btn btn-primary btn-user btn-block" value="Regresar"></a>
+                </div>
+                <div class="col-sm-6">
+                <a href="../index.html" style="text-decoration: none;"><input type="button" class="btn btn-primary btn-user btn-block" value="Menu Principal"></a>
+                </div>
+            </div>
     </div>      
 </body>
 </html>
